@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import ProductCard from "../ProductCard";
 
-const FeaturedProducts = () => {
+const FeaturedProducts = ({ onProductClick }) => {
   const featured = [...products].sort(() => 0.5 - Math.random()).slice(0, 4);
 
   return (
@@ -16,7 +16,11 @@ const FeaturedProducts = () => {
         </Typography>
         <Grid container spacing={3} justifyContent={"center"}>
           {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Grid item key={product.id}>
+              <div onClick={() => onProductClick(product.id)}>
+                <ProductCard product={product} />
+              </div>
+            </Grid>
           ))}
         </Grid>
       </Box>
