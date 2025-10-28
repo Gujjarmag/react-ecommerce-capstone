@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useSnackbar } from "notistack";
 
 // Default Values
 const initialContactFormValues = {
@@ -24,7 +25,10 @@ const contactSchema = yup.object({
   firstName: yup.string().required("First name is required"),
   lastName: yup.string().required("Last name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
-  phone: yup.string().required("Phone is required"),
+  phone: yup
+    .string()
+    .matches(/^[0-9]+$/, "Phone must contain only digits")
+    .required("Phone is required"),
   message: yup.string().required("Message is required"),
 });
 
@@ -33,13 +37,30 @@ export default function ContactPage() {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: initialContactFormValues,
     resolver: yupResolver(contactSchema),
   });
 
+  // SnackBar
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleContactSubmit = (data) => {
     console.log("Contact form data:", data);
+    enqueueSnackbar("Message sent successfully!", {
+      variant: "success",
+      autoHideDuration: 1200,
+    });
+    reset(initialContactFormValues);
+  };
+
+  // SnackBar
+  const handleInvalidSubmit = () => {
+    enqueueSnackbar("Please fill in all required fields correctly.", {
+      variant: "error",
+      autoHideDuration: 1800,
+    });
   };
 
   return (
@@ -54,7 +75,9 @@ export default function ContactPage() {
             Fill out this form to get in contact with us.
           </Typography>
 
-          <form onSubmit={handleSubmit(handleContactSubmit)}>
+          <form
+            onSubmit={handleSubmit(handleContactSubmit, handleInvalidSubmit)}
+          >
             <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
               <Box sx={{ flex: 1 }}>
                 <Controller
@@ -115,6 +138,8 @@ export default function ContactPage() {
                     label="Phone*"
                     variant="outlined"
                     fullWidth
+                    type="text" // 👈 change this back
+                    inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                     error={!!errors.phone}
                     helperText={errors.phone?.message}
                   />
