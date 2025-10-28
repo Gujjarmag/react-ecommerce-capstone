@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { NavLink } from "react-router";
 
 const HeroSection = () => {
   return (
@@ -50,6 +51,8 @@ const HeroSection = () => {
           </Typography>
 
           <Button
+            component={NavLink}
+            to="/products"
             variant="contained"
             color="primary"
             size="large"

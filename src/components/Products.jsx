@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
-import { products } from "../store/productsData";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import ProductsModal from "./ProductsModal";
+import { useSelector } from "react-redux";
 
 const Products = () => {
+  const products = useSelector((state) => state.products.items);
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState({});
 
-  const handleOpen = (id) => {
+  const onProductClick = (id) => {
     setSelectedId(id);
     setOpen(true);
   };
@@ -21,10 +22,12 @@ const Products = () => {
       <Box sx={{ p: 2 }}>
         <Grid container spacing={3} justifyContent={"center"}>
           {products.map((product) => (
-            <Grid item key={product.id}>
-              <div onClick={() => handleOpen(product.id)}>
-                <ProductCard product={product} />
-              </div>
+            <Grid key={product.id}>
+              <ProductCard
+                key={product.id}
+                product={product}
+                onOpen={() => onProductClick(product.id)}
+              />
             </Grid>
           ))}
         </Grid>

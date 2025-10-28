@@ -5,13 +5,28 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import Box from "@mui/material/Box";
+import { addToCart } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
+import Button from "@mui/material/Button";
+import { useSnackbar } from "notistack";
 
-export default function ProductCard({ product }) {
-  const { name, price, weight, image, description } = product;
+export default function ProductCard({ product, onOpen }) {
+  const { name, price, weight, image } = product;
+  const dispatch = useDispatch();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClickVariant = (variant) => () => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar("Item added to cart!", {
+      variant: "success",
+      autoHideDuration: 1200,
+    });
+  };
 
   return (
     <Card sx={{ maxWidth: 250 }}>
-      <CardActionArea>
+      <CardActionArea onClick={onOpen}>
         {/* <Box
           sx={{
             bgcolor: "#1976D2",
@@ -37,6 +52,16 @@ export default function ProductCard({ product }) {
           </Typography>
         </CardContent>
       </CardActionArea>
+      <Button
+        variant="outlined"
+        sx={{ m: 2 }}
+        onClick={() => {
+          dispatch(addToCart(product));
+          handleClickVariant("success")();
+        }}
+      >
+        Add to Cart
+      </Button>
     </Card>
   );
 }

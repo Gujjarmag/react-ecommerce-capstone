@@ -7,6 +7,8 @@ import { useState } from "react";
 import { products } from "../store/productsData";
 import Grid from "@mui/material/Grid";
 import Fade from "@mui/material/Fade";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
 
 const style = {
   position: "absolute",
@@ -30,6 +32,8 @@ export default function ProductsModal(props) {
   // Adding line to return nothing if product not found
   if (!clickedProduct) return null;
 
+  const dispatch = useDispatch();
+
   return (
     <>
       <Modal
@@ -41,14 +45,14 @@ export default function ProductsModal(props) {
         <Fade in={open}>
           <Box sx={style}>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
+              <Grid xs={12} sm={6}>
                 <img
                   src={clickedProduct.image}
                   alt={clickedProduct.name}
                   style={{ width: "100%", borderRadius: "8px" }} //Change this style if does not look good
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid xs={12} sm={6}>
                 <Typography gutterBottom variant="h4" id="product-modal-title">
                   {clickedProduct.name}
                 </Typography>
@@ -65,6 +69,13 @@ export default function ProductsModal(props) {
                 >
                   Description: {clickedProduct.description}
                 </Typography>
+                <Button
+                  variant="contained"
+                  sx={{ mt: 3, alignSelf: "flex-start" }}
+                  onClick={() => dispatch(addToCart(clickedProduct))}
+                >
+                  Add to Cart
+                </Button>
               </Grid>
             </Grid>
           </Box>

@@ -17,23 +17,23 @@ import Logo from "../assets/logo_mmww.png";
 import { Link, NavLink } from "react-router";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled } from "@mui/material/styles";
-import Badge from "@mui/material/Badge";
+import Badge, { badgeClasses } from "@mui/material/Badge";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    right: -3,
-    top: 13,
-    border: `2px solid ${(theme.vars ?? theme).palette.background.paper}`,
-    padding: "0 4px",
-  },
-}));
+const CartBadge = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -12px;
+    right: -6px;
+  }
+`;
 
 function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { totalQuantity } = useSelector((state) => state.cart);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -100,19 +100,22 @@ function NavBar(props) {
               Products
             </NavLink>
 
-            {/* Add padding x-direction | NavLink to be added? */}
+            {/* Add padding x-direction */}
             <NavLink
               className={({ isActive }) =>
                 isActive
                   ? "text-white-500 font-bold px-3"
                   : "text-[#B0D9FE] px-3"
               }
-              to="/checkout"
+              to="/cart"
             >
               <IconButton aria-label="cart">
-                <StyledBadge badgeContent={8} color="secondary">
-                  <ShoppingCartIcon />
-                </StyledBadge>
+                <ShoppingCartIcon />
+                <CartBadge
+                  badgeContent={totalQuantity}
+                  color="secondary"
+                  overlap="circular"
+                />
               </IconButton>
             </NavLink>
 
@@ -124,7 +127,7 @@ function NavBar(props) {
               }
               to="/contact"
             >
-              Contacts
+              Contact
             </NavLink>
 
             {/* Cart Icon To be removed */}
