@@ -10,14 +10,19 @@ import Fade from "@mui/material/Fade";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation, Pagination } from "swiper/modules";
+
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  maxWidth: 600,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  borderRadius: "16px",
   boxShadow: 24,
   p: 4,
 };
@@ -46,32 +51,58 @@ export default function ProductsModal(props) {
           <Box sx={style}>
             <Grid container spacing={3}>
               <Grid xs={12} sm={6}>
-                <img
-                  src={clickedProduct.image}
-                  alt={clickedProduct.name}
-                  style={{ width: "100%", borderRadius: "8px" }} //Change this style if does not look good
-                />
+                <Swiper
+                  spaceBetween={10}
+                  slidesPerView={1}
+                  navigation
+                  pagination={{ clickable: true }}
+                  modules={[Navigation, Pagination]}
+                  style={{ width: "100%", borderRadius: "12px" }}
+                >
+                  {clickedProduct.images.map((img, index) => (
+                    <SwiperSlide key={index}>
+                      <img
+                        src={img}
+                        alt={`${clickedProduct.name}-${index}`}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          borderRadius: "12px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </Grid>
-              <Grid xs={12} sm={6}>
+              <Grid
+                xs={12}
+                sm={6}
+                sx={{ display: "flex", flexDirection: "column", gap: 1 }}
+              >
                 <Typography gutterBottom variant="h4" id="product-modal-title">
                   {clickedProduct.name}
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                <Typography variant="body2" color="text.secondary">
                   Price: {clickedProduct.price} coins
                 </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                <Typography variant="body2" color="text.secondary">
                   Weight: {clickedProduct.weight}
                 </Typography>
                 <Typography
                   id="product-modal-description"
                   variant="body2"
-                  sx={{ color: "text.secondary" }}
+                  color="text.secondary"
                 >
                   Description: {clickedProduct.description}
                 </Typography>
                 <Button
                   variant="contained"
-                  sx={{ mt: 3, alignSelf: "flex-start" }}
+                  sx={{
+                    mt: 3,
+                    alignSelf: "flex-start",
+                    borderRadius: "8px",
+                  }}
                   onClick={() => dispatch(addToCart(clickedProduct))}
                 >
                   Add to Cart

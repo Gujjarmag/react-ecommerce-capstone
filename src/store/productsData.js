@@ -22,6 +22,8 @@ export const products = [
     price: 1.5,
     weight: "0.05 kg",
     image: Egg,
+    images: [Egg, Egg, Egg],
+
     description: "An egg.",
   },
   {
@@ -30,6 +32,8 @@ export const products = [
     price: 10.5,
     weight: "2.5 kg",
     image: StoneAxe,
+    images: [StoneAxe, StoneAxe, StoneAxe],
+
     description: "Stone Axe.",
   },
   {
@@ -38,6 +42,8 @@ export const products = [
     price: 945,
     weight: "3.5 kg",
     image: Bronze_Axe,
+    images: [Bronze_Axe, Bronze_Axe, Bronze_Axe],
+
     description: "Bronze Axe.",
   },
   {
@@ -46,6 +52,8 @@ export const products = [
     price: 195,
     weight: "2.0 kg",
     image: CopperHammer,
+    images: [CopperHammer, CopperHammer, CopperHammer],
+
     description: "Copper Hammer.",
   },
   {
@@ -54,6 +62,7 @@ export const products = [
     price: 465,
     weight: "2.0 kg",
     image: Bronze_Hammer,
+    images: [Bronze_Hammer, Bronze_Hammer, Bronze_Hammer],
     description: "Bronze Hammer.",
   },
   {
@@ -62,6 +71,8 @@ export const products = [
     price: 7.5,
     weight: "0.5 kg",
     image: Stone_Knife,
+    images: [Stone_Knife, Stone_Knife, Stone_Knife],
+
     description: "Stone Knife.",
   },
   {
@@ -70,6 +81,8 @@ export const products = [
     price: 195,
     weight: "0.5 kg",
     image: Copper_Knife,
+    images: [Copper_Knife, Copper_Knife, Copper_Knife],
+
     description: "Copper Knife.",
   },
   {
@@ -78,6 +91,8 @@ export const products = [
     price: 10.5,
     weight: "3.0 kg",
     image: Stone_Pickaxe,
+    images: [Stone_Pickaxe, Stone_Pickaxe, Stone_Pickaxe],
+
     description: "Stone Pickaxe.",
   },
   {
@@ -86,6 +101,8 @@ export const products = [
     price: 930,
     weight: "5.0 kg",
     image: Bronze_Pickaxe,
+    images: [Bronze_Pickaxe, Bronze_Pickaxe, Bronze_Pickaxe],
+
     description: "Bronze Pickaxe.",
   },
   {
@@ -94,6 +111,8 @@ export const products = [
     price: 270,
     weight: "3.0 kg",
     image: Copper_Shovel,
+    images: [Copper_Shovel, Copper_Shovel, Copper_Shovel],
+
     description: "Copper Shovel.",
   },
   {
@@ -102,6 +121,8 @@ export const products = [
     price: 540,
     weight: "3.0 kg",
     image: Bronze_Shovel,
+    images: [Bronze_Shovel, Bronze_Shovel, Bronze_Shovel],
+
     description: "Bronze Shovel.",
   },
   {
@@ -110,6 +131,8 @@ export const products = [
     price: 1650,
     weight: "0.7 kg",
     image: Felt_Vest,
+    images: [Felt_Vest, Felt_Vest, Felt_Vest],
+
     description: "Felt Vest.",
   },
   {
@@ -118,6 +141,8 @@ export const products = [
     price: 1995,
     weight: "0.8 kg",
     image: Quilted_Vest,
+    images: [Quilted_Vest, Quilted_Vest, Quilted_Vest],
+
     description: "Quilted Vest.",
   },
   {
@@ -126,6 +151,8 @@ export const products = [
     price: 1260,
     weight: "0.5 kg",
     image: Tunic,
+    images: [Tunic, Tunic, Tunic],
+
     description: "Tunic.",
   },
   {
@@ -134,6 +161,8 @@ export const products = [
     price: 360,
     weight: "0.25 kg",
     image: FurShoes,
+    images: [FurShoes, FurShoes, FurShoes],
+
     description: "Fur Shoes.",
   },
   {
@@ -142,6 +171,8 @@ export const products = [
     price: 150,
     weight: "0.15 kg",
     image: SimpleShoes,
+    images: [SimpleShoes, SimpleShoes, SimpleShoes],
+
     description: "Simple Shoes.",
   },
 ];
