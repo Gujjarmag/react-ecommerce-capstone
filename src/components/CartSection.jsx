@@ -10,29 +10,67 @@ import Card from "@mui/material/Card";
 import { addToCart, clearCart, removeFromCart } from "../store/cartSlice";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
+import Toolbar from "@mui/material/Toolbar";
 
 const CartSection = () => {
-  const { cartList, totalQuantity, totalPrice } = useSelector(
+  const { cartList, totalQuantity, totalPrice, totalWeight } = useSelector(
     (state) => state.cart
   );
   const dispatch = useDispatch();
 
   if (cartList.length === 0) {
     return (
-      <Box sx={{ textAlign: "center", mt: 5 }}>
-        <Typography variant="h5">
-          Your cart is empty, trying adding some products from our products
-          page. Thanks!
-        </Typography>
-      </Box>
+      <>
+        <Toolbar />
+        <Box sx={{ textAlign: "center", mt: 5 }}>
+          <Typography variant="h5" sx={{ fontWeight: 600, color: "#333" }}>
+            Your cart is empty 🛒
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#666" }}>
+            Try adding some products from our Products page!
+          </Typography>
+        </Box>
+      </>
     );
   }
   return (
     <>
-      <Box sx={{ p: 2 }}>
-        <Grid container spacing={3} justifyContent={"center"}>
+      <Box
+        sx={{
+          backgroundColor: "#f8f9fa",
+          minHeight: "100vh",
+          px: { xs: 2, sm: 4, md: 6 },
+          py: 4,
+          mt: { xs: 7, sm: 8 },
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 3,
+            fontWeight: 600,
+            textAlign: "center",
+            color: "#333",
+          }}
+        >
+          Your Shopping Cart
+        </Typography>
+        <Grid
+          container
+          spacing={3}
+          justifyContent={"center"}
+          sx={{ maxWidth: "1300px", mx: "auto" }}
+        >
           {cartList.map((item) => (
-            <Grid key={item.id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              key={item.id}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <Card sx={{ maxWidth: 250 }}>
                 <CardMedia
                   component="img"
@@ -42,11 +80,15 @@ const CartSection = () => {
                 />
                 <CardContent>
                   <Typography variant="h6">{item.name}</Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: "#555" }}>
                     Price: {item.price} coins
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: "#555" }}>
                     Quantity: {item.quantity}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#555" }}>
+                    Weight: {item.weight} × {item.quantity} ={" "}
+                    {(parseFloat(item.weight) * item.quantity).toFixed(2)} kg
                   </Typography>
                   <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
                     <Button
@@ -59,7 +101,7 @@ const CartSection = () => {
                     </Button>
                     <Button
                       variant="outlined"
-                      color="error"
+                      color="success"
                       size="small"
                       onClick={() => dispatch(addToCart(item))}
                     >
@@ -72,18 +114,16 @@ const CartSection = () => {
           ))}
         </Grid>
 
-        <Divider sx={{ my: 4 }} />
+        <Divider sx={{ my: 6 }} />
 
-        <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Box sx={{ mt: 4 }}>
           <Typography variant="h6">Total Items: {totalQuantity}</Typography>
           <Typography variant="h6">Total Price: {totalPrice} coins</Typography>
+          <Typography variant="h6">
+            Total Weight: {totalWeight.toFixed(2)} kg
+          </Typography>
 
-          <Stack
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-            sx={{ mt: 2 }}
-          >
+          <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
             <Button
               variant="contained"
               color="error"

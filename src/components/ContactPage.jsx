@@ -64,21 +64,40 @@ export default function ContactPage() {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-      <Card variant="outlined" sx={{ p: 1 }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        mt: 4,
+        background: "linear-gradient(to right, #f3f4f6, #ffffff)",
+        alignItems: "center",
+        minHeight: "100vh",
+        p: 2,
+      }}
+    >
+      <Card
+        variant="outlined"
+        sx={{
+          p: 1,
+          boxShadow: 3,
+          borderRadius: "12px",
+          backgroundColor: "#fff",
+        }}
+      >
         <CardContent>
-          <Typography gutterBottom variant="h5">
+          <Typography gutterBottom variant="h4" sx={{ color: "#1976D2" }}>
             Contact Us
           </Typography>
 
-          <Typography gutterBottom variant="body2">
-            Fill out this form to get in contact with us.
+          <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
+            We'd love to hear from you! Please fill out the form below and we’ll
+            get back to you soon.
           </Typography>
 
           <form
             onSubmit={handleSubmit(handleContactSubmit, handleInvalidSubmit)}
           >
-            <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+            <Box sx={{ display: "flex", gap: 2, mt: 3 }}>
               <Box sx={{ flex: 1 }}>
                 <Controller
                   name="firstName"
@@ -138,7 +157,7 @@ export default function ContactPage() {
                     label="Phone*"
                     variant="outlined"
                     fullWidth
-                    type="text" // 👈 change this back
+                    type="text"
                     inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                     error={!!errors.phone}
                     helperText={errors.phone?.message}
@@ -163,7 +182,16 @@ export default function ContactPage() {
               />
             </Box>
             <CardActions sx={{ justifyContent: "center", mt: 2 }}>
-              <Button variant="contained" type="submit" fullWidth>
+              <Button
+                variant="contained"
+                type="submit"
+                fullWidth
+                sx={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  py: 1.2,
+                }}
+              >
                 Submit
               </Button>
             </CardActions>

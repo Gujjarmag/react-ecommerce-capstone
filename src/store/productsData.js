@@ -24,7 +24,8 @@ export const products = [
     image: Egg,
     images: [Egg, Egg, Egg],
 
-    description: "An egg.",
+    description:
+      "A type of food. Collected from the Henhouse or Goose House. Can be consumed or cooked into various dishes in the Kitchen.",
   },
   {
     id: 2,
@@ -34,7 +35,8 @@ export const products = [
     image: StoneAxe,
     images: [StoneAxe, StoneAxe, StoneAxe],
 
-    description: "Stone Axe.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for cutting down trees and hacking them into Logs.",
   },
   {
     id: 3,
@@ -44,7 +46,8 @@ export const products = [
     image: Bronze_Axe,
     images: [Bronze_Axe, Bronze_Axe, Bronze_Axe],
 
-    description: "Bronze Axe.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for cutting down trees and hacking them into Logs.",
   },
   {
     id: 4,
@@ -54,7 +57,8 @@ export const products = [
     image: CopperHammer,
     images: [CopperHammer, CopperHammer, CopperHammer],
 
-    description: "Copper Hammer.",
+    description:
+      "Hammer is used for building, repairing, upgrading and destroying structures.",
   },
   {
     id: 5,
@@ -63,7 +67,8 @@ export const products = [
     weight: "2.0 kg",
     image: Bronze_Hammer,
     images: [Bronze_Hammer, Bronze_Hammer, Bronze_Hammer],
-    description: "Bronze Hammer.",
+    description:
+      "Hammer is used for building, repairing, upgrading and destroying structures.",
   },
   {
     id: 6,
@@ -73,7 +78,8 @@ export const products = [
     image: Stone_Knife,
     images: [Stone_Knife, Stone_Knife, Stone_Knife],
 
-    description: "Stone Knife.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for skinning and butchering animals.",
   },
   {
     id: 7,
@@ -83,7 +89,8 @@ export const products = [
     image: Copper_Knife,
     images: [Copper_Knife, Copper_Knife, Copper_Knife],
 
-    description: "Copper Knife.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for skinning and butchering animals.",
   },
   {
     id: 8,
@@ -93,7 +100,8 @@ export const products = [
     image: Stone_Pickaxe,
     images: [Stone_Pickaxe, Stone_Pickaxe, Stone_Pickaxe],
 
-    description: "Stone Pickaxe.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for mining minerals.",
   },
   {
     id: 9,
@@ -103,7 +111,8 @@ export const products = [
     image: Bronze_Pickaxe,
     images: [Bronze_Pickaxe, Bronze_Pickaxe, Bronze_Pickaxe],
 
-    description: "Bronze Pickaxe.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for mining minerals.",
   },
   {
     id: 10,
@@ -113,7 +122,8 @@ export const products = [
     image: Copper_Shovel,
     images: [Copper_Shovel, Copper_Shovel, Copper_Shovel],
 
-    description: "Copper Shovel.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for extracting Clay from Clay Deposits.",
   },
   {
     id: 11,
@@ -123,7 +133,8 @@ export const products = [
     image: Bronze_Shovel,
     images: [Bronze_Shovel, Bronze_Shovel, Bronze_Shovel],
 
-    description: "Bronze Shovel.",
+    description:
+      "A type of tool. Crafted at the Anvil in the Smithy. Can be used for extracting Clay from Clay Deposits.",
   },
   {
     id: 12,
@@ -133,7 +144,8 @@ export const products = [
     image: Felt_Vest,
     images: [Felt_Vest, Felt_Vest, Felt_Vest],
 
-    description: "Felt Vest.",
+    description:
+      "A type of clothing. Crafted at the Tailoring Table in the Sewing Hut. Can be used for wearing and temperature control.",
   },
   {
     id: 13,
@@ -143,7 +155,8 @@ export const products = [
     image: Quilted_Vest,
     images: [Quilted_Vest, Quilted_Vest, Quilted_Vest],
 
-    description: "Quilted Vest.",
+    description:
+      "A type of clothing. Crafted at the Tailoring Table in the Sewing Hut. Can be used for wearing and temperature control.",
   },
   {
     id: 14,
@@ -153,7 +166,8 @@ export const products = [
     image: Tunic,
     images: [Tunic, Tunic, Tunic],
 
-    description: "Tunic.",
+    description:
+      "A type of clothing. Crafted at the Tailoring Table in the Sewing Hut. Can be used for wearing and temperature control.",
   },
   {
     id: 15,
@@ -163,7 +177,8 @@ export const products = [
     image: FurShoes,
     images: [FurShoes, FurShoes, FurShoes],
 
-    description: "Fur Shoes.",
+    description:
+      "A type of clothing. Crafted at the Tailoring Table in the Sewing Hut. Can be used for wearing and temperature control.",
   },
   {
     id: 16,
@@ -173,6 +188,7 @@ export const products = [
     image: SimpleShoes,
     images: [SimpleShoes, SimpleShoes, SimpleShoes],
 
-    description: "Simple Shoes.",
+    description:
+      "A type of clothing. Crafted at the Tailoring Table in the Sewing Hut. Can be used for wearing and temperature control.",
   },
 ];
