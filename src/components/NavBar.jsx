@@ -65,6 +65,11 @@ function NavBar(props) {
       <CssBaseline />
       <AppBar component="nav" style={{ background: "#1976D2" }} elevation={10}>
         <Toolbar className="flex justify-between">
+          {/* Brand Logo */}
+          <Link to="/">
+            <img src={Logo} alt="MedievalMart Logo" className="w-45 h-auto" />
+          </Link>
+
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -74,9 +79,6 @@ function NavBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/">
-            <img src={Logo} alt="MedievalMart Logo" className="w-45 h-auto" />
-          </Link>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <NavLink
