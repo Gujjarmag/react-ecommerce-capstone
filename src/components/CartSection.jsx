@@ -11,12 +11,27 @@ import { addToCart, clearCart, removeFromCart } from "../store/cartSlice";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
+import ProductsModal from "./ProductsModal";
 
 const CartSection = () => {
   const { cartList, totalQuantity, totalPrice, totalWeight } = useSelector(
     (state) => state.cart
   );
   const dispatch = useDispatch();
+
+  // Product Modal State
+  const [open, setOpen] = React.useState(false);
+  const [selectedId, setSelectedId] = React.useState(null);
+
+  const handleOpen = (id) => {
+    setSelectedId(id);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedId(null);
+  };
 
   if (cartList.length === 0) {
     return (
@@ -69,7 +84,12 @@ const CartSection = () => {
               md={4}
               lg={3}
               key={item.id}
-              sx={{ display: "flex", justifyContent: "center" }}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                cursor: "pointer",
+              }}
+              onClick={() => handleOpen(item.id)}
             >
               <Card sx={{ maxWidth: 250 }}>
                 <CardMedia
@@ -95,7 +115,10 @@ const CartSection = () => {
                       variant="outlined"
                       color="error"
                       size="small"
-                      onClick={() => dispatch(removeFromCart(item))}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch(removeFromCart(item));
+                      }}
                     >
                       -
                     </Button>
@@ -103,7 +126,10 @@ const CartSection = () => {
                       variant="outlined"
                       color="success"
                       size="small"
-                      onClick={() => dispatch(addToCart(item))}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch(addToCart(item));
+                      }}
                     >
                       +
                     </Button>
@@ -141,6 +167,11 @@ const CartSection = () => {
           </Stack>
         </Box>
       </Box>
+      <ProductsModal
+        open={open}
+        handleClose={handleClose}
+        currentProductId={selectedId}
+      />
     </>
   );
 };

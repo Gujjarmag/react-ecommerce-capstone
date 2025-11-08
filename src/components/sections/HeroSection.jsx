@@ -72,7 +72,7 @@ const HeroSection = () => {
             variant="h3"
             component="h1"
             sx={{
-              color: "#D9C6A5",
+              color: "#FFF8E1",
               fontWeight: "bold",
               mb: 3,
               textShadow: "2px 2px 10px rgba(0,0,0,0.7)",
