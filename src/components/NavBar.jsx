@@ -21,7 +21,12 @@ import Badge, { badgeClasses } from "@mui/material/Badge";
 import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "Products", path: "/products" },
+  { label: "Cart", path: "/cart" },
+  { label: "Contact", path: "/contact" },
+];
 
 const CartBadge = styled(Badge)`
   & .${badgeClasses.badge} {
@@ -41,15 +46,73 @@ function NavBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Link to="/">
-        <img src={Logo} alt="MedievalMart Logo" className="w-45 h-auto" />
-      </Link>
-      <Divider />
+      {/* Logo section */}
+      <Box
+        sx={{
+          pt: 2,
+          pb: 2,
+          backgroundColor: "#1565C0",
+        }}
+      >
+        <Link to="/">
+          <img
+            src={Logo}
+            alt="MedievalMart Logo"
+            className="w-45 h-auto mx-auto"
+          />
+        </Link>
+      </Box>
+
+      {/* Divider */}
+      <Divider sx={{ borderColor: "#ffffff33" }} />
+
+      {/* Navigation items */}
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+          <ListItem key={item.path} disablePadding>
+            <ListItemButton
+              component={Link}
+              to={item.path}
+              sx={{
+                textAlign: "center",
+                color: "#fff",
+                justifyContent: "center",
+                "&:hover": {
+                  backgroundColor: "#1565C0",
+                },
+                py: 1.5,
+              }}
+            >
+              <ListItemText
+                primary={
+                  item.label === "Cart" ? (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 1, // space between text and badge
+                      }}
+                    >
+                      <span>{item.label}</span>
+                      <CartBadge
+                        badgeContent={totalQuantity}
+                        color="secondary"
+                        sx={{
+                          "& .MuiBadge-badge": {
+                            right: -4,
+                            top: 4,
+                          },
+                        }}
+                      >
+                        <ShoppingCartIcon sx={{ color: "#fff" }} />
+                      </CartBadge>
+                    </Box>
+                  ) : (
+                    item.label
+                  )
+                }
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -64,7 +127,7 @@ function NavBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav" style={{ background: "#1976D2" }} elevation={10}>
-        <Toolbar className="flex justify-between">
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Brand Logo */}
           <Link to="/">
             <img src={Logo} alt="MedievalMart Logo" className="w-45 h-auto" />
@@ -115,7 +178,7 @@ function NavBar(props) {
                 <ShoppingCartIcon />
                 <CartBadge
                   badgeContent={totalQuantity}
-                  color="secondary"
+                  color="error"
                   overlap="circular"
                 />
               </IconButton>
@@ -131,11 +194,6 @@ function NavBar(props) {
             >
               Contact
             </NavLink>
-
-            {/* Cart Icon To be removed */}
-            {/* <NavLink to="/cart">
-              <ShoppingCartIcon color="action" />
-            </NavLink> */}
           </Box>
         </Toolbar>
       </AppBar>
@@ -153,6 +211,10 @@ function NavBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor: "#1976D2",
+              color: "#fff",
+              borderTopRightRadius: "16px",
+              borderBottomRightRadius: "16px",
             },
           }}
         >
