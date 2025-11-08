@@ -19,6 +19,7 @@ export const products = [
   {
     id: 1,
     name: "Egg",
+    category: "Food",
     price: 1.5,
     weight: "0.05 kg",
     image: Egg,
@@ -30,6 +31,7 @@ export const products = [
   {
     id: 2,
     name: "Stone Axe",
+    category: "Axes",
     price: 10.5,
     weight: "2.5 kg",
     image: StoneAxe,
@@ -41,6 +43,7 @@ export const products = [
   {
     id: 3,
     name: "Bronze Axe",
+    category: "Axes",
     price: 945,
     weight: "3.5 kg",
     image: Bronze_Axe,
@@ -52,6 +55,7 @@ export const products = [
   {
     id: 4,
     name: "Copper Hammer",
+    category: "Hammers",
     price: 195,
     weight: "2.0 kg",
     image: CopperHammer,
@@ -63,6 +67,7 @@ export const products = [
   {
     id: 5,
     name: "Bronze Hammer",
+    category: "Hammers",
     price: 465,
     weight: "2.0 kg",
     image: Bronze_Hammer,
@@ -73,6 +78,7 @@ export const products = [
   {
     id: 6,
     name: "Stone Knife",
+    category: "Knives",
     price: 7.5,
     weight: "0.5 kg",
     image: Stone_Knife,
@@ -84,6 +90,7 @@ export const products = [
   {
     id: 7,
     name: "Copper Knife",
+    category: "Knives",
     price: 195,
     weight: "0.5 kg",
     image: Copper_Knife,
@@ -95,6 +102,7 @@ export const products = [
   {
     id: 8,
     name: "Stone Pickaxe",
+    category: "Pickaxes",
     price: 10.5,
     weight: "3.0 kg",
     image: Stone_Pickaxe,
@@ -106,6 +114,7 @@ export const products = [
   {
     id: 9,
     name: "Bronze Pickaxe",
+    category: "Pickaxes",
     price: 930,
     weight: "5.0 kg",
     image: Bronze_Pickaxe,
@@ -117,6 +126,7 @@ export const products = [
   {
     id: 10,
     name: "Copper Shovel",
+    category: "Shovels",
     price: 270,
     weight: "3.0 kg",
     image: Copper_Shovel,
@@ -128,6 +138,7 @@ export const products = [
   {
     id: 11,
     name: "Bronze Shovel",
+    category: "Shovels",
     price: 540,
     weight: "3.0 kg",
     image: Bronze_Shovel,
@@ -150,6 +161,7 @@ export const products = [
   {
     id: 13,
     name: "Quilted Vest",
+    category: "Clothing",
     price: 1995,
     weight: "0.8 kg",
     image: Quilted_Vest,
@@ -161,6 +173,7 @@ export const products = [
   {
     id: 14,
     name: "Tunic",
+    category: "Clothing",
     price: 1260,
     weight: "0.5 kg",
     image: Tunic,
@@ -172,6 +185,7 @@ export const products = [
   {
     id: 15,
     name: "Fur Shoes",
+    category: "Shoes",
     price: 360,
     weight: "0.25 kg",
     image: FurShoes,
@@ -183,6 +197,7 @@ export const products = [
   {
     id: 16,
     name: "Simple Shoes",
+    category: "Shoes",
     price: 150,
     weight: "0.15 kg",
     image: SimpleShoes,

@@ -25,9 +25,9 @@ const FeaturedProducts = ({ onProductClick }) => {
         <Typography variant="h4" gutterBottom align="center">
           Featured Products
         </Typography>
-        <Grid container spacing={3} justifyContent={"center"}>
+        <Grid container spacing={4} justifyContent={"center"}>
           {featured.map((product) => (
-            <Grid key={product.id}>
+            <Grid key={product.id} size={{ xs: 12, sm: 6, md: 2.5 }}>
               <ProductCard
                 key={product.id}
                 product={product}

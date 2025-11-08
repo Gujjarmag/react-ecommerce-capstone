@@ -6,11 +6,25 @@ import ProductsModal from "./ProductsModal";
 import { useSelector } from "react-redux";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import useProductFilters from "../hooks/useProductFilters";
+import ProductsFilterBar from "./sections/ProductsFilterBar";
 
 const Products = () => {
   const products = useSelector((state) => state.products.items);
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState({});
+
+  const {
+    categories,
+    filteredProducts,
+    searchTerm,
+    selectedCategory,
+    sortOption,
+    setSearchTerm,
+    setSelectedCategory,
+    setSortOption,
+    clearFilters,
+  } = useProductFilters(products);
 
   const onProductClick = (id) => {
     setSelectedId(id);
@@ -41,34 +55,55 @@ const Products = () => {
         >
           Our Products
         </Typography>
+        <ProductsFilterBar
+          categories={categories}
+          searchTerm={searchTerm}
+          selectedCategory={selectedCategory}
+          sortOption={sortOption}
+          onSearchChange={setSearchTerm}
+          onCategoryChange={setSelectedCategory}
+          onSortChange={setSortOption}
+          onClearFilters={clearFilters}
+        />
+
         <Grid
           container
-          spacing={3}
-          justifyContent={"center"}
+          justifyContent="center"
+          spacing={4}
           sx={{
             maxWidth: "1300px",
             mx: "auto",
           }}
         >
-          {products.map((product) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              key={product.id}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <Grid
+                size={{ xs: 12, sm: 6, md: 4, lg: 2.5 }}
+                key={product.id}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <ProductCard
+                  product={product}
+                  onOpen={() => onProductClick(product.id)}
+                />
+              </Grid>
+            ))
+          ) : (
+            <Typography
+              variant="body1"
               sx={{
-                display: "flex",
-                justifyContent: "center",
+                textAlign: "center",
+                mt: 5,
+                color: "gray",
+                width: "100%",
               }}
             >
-              <ProductCard
-                product={product}
-                onOpen={() => onProductClick(product.id)}
-              />
-            </Grid>
-          ))}
+              No products found.
+            </Typography>
+          )}
         </Grid>
       </Box>
 

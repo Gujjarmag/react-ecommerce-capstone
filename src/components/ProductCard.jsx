@@ -25,20 +25,8 @@ export default function ProductCard({ product, onOpen }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 250 }}>
+    <Card sx={{ width: "100%" }}>
       <CardActionArea onClick={onOpen}>
-        {/* <Box
-          sx={{
-            bgcolor: "#1976D2",
-            color: "white",
-            textAlign: "center",
-            py: 0.5,
-          }}
-        >
-          <Typography gutterBottom variant="h5" sx={{ fontWeight: "bold" }}>
-            {name}
-          </Typography>
-        </Box> */}
         <CardMedia component="img" height="140" image={image} alt={name} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
