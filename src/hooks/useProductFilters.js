@@ -25,7 +25,7 @@ export default function useProductFilters(products) {
       return matchesSearch && matchesCategory;
     });
 
-    // ✅ Apply sorting
+    // Apply sorting
     if (sortOption === "name-asc") {
       result = [...result].sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortOption === "name-desc") {
