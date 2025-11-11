@@ -4,7 +4,6 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import ProductsModal from "./ProductsModal";
 import { useSelector } from "react-redux";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import useProductFilters from "../hooks/useProductFilters";
 import ProductsFilterBar from "./sections/ProductsFilterBar";

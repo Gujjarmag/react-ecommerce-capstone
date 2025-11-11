@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 export default function useProductFilters(products) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [sortOption, setSortOption] = useState("none"); // 👈 New state for sorting
+  const [sortOption, setSortOption] = useState("none"); // New state for sorting
 
   // Extract unique categories
   const categories = useMemo(() => {

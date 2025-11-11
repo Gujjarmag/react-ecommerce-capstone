@@ -29,7 +29,7 @@ const ProductsFilterBar = ({
           mb: 4,
         }}
       >
-        {/* 🔍 Search */}
+        {/*Search */}
         <TextField
           fullWidth
           label="Search products..."
@@ -55,7 +55,7 @@ const ProductsFilterBar = ({
           </Select>
         </FormControl>
 
-        {/*  Sort By */}
+        {/* Sort By */}
         <FormControl fullWidth>
           <InputLabel id="sort-select-label">Sort By</InputLabel>
           <Select
